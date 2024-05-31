@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Info</title>
+</head>
+<body>
+    <h1>Device Information</h1>
+    <p id="device-info"></p>
+
+    <script>
+        function getDeviceInfo() {
+            var info = {
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                screenWidth: screen.width,
+                screenHeight: screen.height
+            };
+
+            return info;
+        }
+
+        function displayDeviceInfo() {
+            var info = getDeviceInfo();
+            var infoText = `
+                User Agent: ${info.userAgent}<br>
+                Platform: ${info.platform}<br>
+                Language: ${info.language}<br>
+                Screen Width: ${info.screenWidth}<br>
+                Screen Height: ${info.screenHeight}
+            `;
+            document.getElementById('device-info').innerHTML = infoText;
+
+            // Możesz również wysłać te dane na serwer za pomocą fetch lub AJAX
+            // fetch('/log', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(info) });
+        }
+
+        displayDeviceInfo();
+    </script>
+</body>
+</html>
